@@ -1,0 +1,16 @@
+# Hidden files
+.*
+
+# Temporary files
+*~
+
+# Git
+!.git*
+
+# Gradle
+build/
+
+# IntelliJ Idea
+*.iml
+*.ipr
+*.iws

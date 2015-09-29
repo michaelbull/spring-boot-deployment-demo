@@ -1,0 +1,13 @@
+subprojects {
+    apply plugin: 'java'
+}
+
+project(':backend') {
+    dependencies {
+        compile project(':frontend')
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.6'
+}

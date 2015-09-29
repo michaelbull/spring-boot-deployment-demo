@@ -1,0 +1,12 @@
+{
+  "name": "www",
+  "scripts": {
+    "build": "gulp build"
+  },
+  "dependencies": {
+    "gulp": "*",
+    "gulp-less": "*",
+    "gulp-minify-css": "*"
+  },
+  "private": true
+}

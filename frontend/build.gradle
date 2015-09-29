@@ -1,0 +1,33 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.moowork.gradle:gradle-node-plugin:0.10"
+    }
+}
+
+apply plugin: "com.moowork.node"
+
+node {
+    version = '0.10.29'
+    npmVersion = '1.4.21'
+    download = true
+}
+
+jar {
+    from 'build/dist' // only include files located in build/dist to avoid including the entire frontend src
+
+    // Jar contains duplicate empty folders, see Gradle issue:
+    // http://issues.gradle.org/browse/GRADLE-1830
+    // so we need to set includeEmptyDirs to false
+    includeEmptyDirs = false
+}
+
+task gulpBuild(dependsOn: npmInstall, type: NpmTask) {
+    args = ['run', 'build']
+}
+
+jar.dependsOn gulpBuild
